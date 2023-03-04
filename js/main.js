@@ -38,8 +38,15 @@ function displayProducts(products) {
         priceTag.innerText = product.price + ' kr';
         div.appendChild(priceTag);
 
-        const btn = document.createElement('button');
-        btn.innerText = 'Add to cart';
-        div.appendChild(btn);
+        if(product.saldo != 0){
+            const btn = document.createElement('button');
+            btn.innerText = 'Add to cart';
+            div.appendChild(btn);
+        }
+        else{
+            const p = document.createElement('p');
+            p.innerText = 'Out of stock';
+            div.appendChild(p);
+        }
     });
 }
