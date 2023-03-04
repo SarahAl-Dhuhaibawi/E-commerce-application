@@ -1,0 +1,105 @@
+:root{
+    --highlighted-background: hsl(106, 33%, 90%);
+    --background-color: hsl(45, 29%, 97%);
+    --highlight-text: hsl(31, 85%, 62%);
+    --text-color: hsl(195, 7%, 23%);
+
+    --header-font: 'Oswald', sans-serif;
+    
+    --gap: 2rem;
+
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+body{
+    background-color: var(--background-color);
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    font-family: var(--header-font);
+    padding: 1rem 2rem 1rem;
+    color: var(--highlight-text);
+}
+
+.header span img{
+    /*Changes color of image to hsl(31, 85%, 62%)*/
+    filter: invert(89%) sepia(14%) saturate(7484%) hue-rotate(324deg) brightness(100%) contrast(89%);
+}
+
+.banner-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--highlighted-background);
+    color: var(--text-color);
+    height: 15rem;
+    width: 100%;
+    font-family: var(--header-font);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 0.5rem + 4vw, 2.5rem);
+    text-decoration: underline;
+    text-decoration-thickness: .4rem;
+}
+
+main{
+    display: flex;
+    flex-flow: row wrap;
+    padding: var(--gap);
+    column-gap: var(--gap);
+    row-gap: var(--gap);
+}
+
+.product-card{
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+    color: var(--text-color);
+}
+
+.product-card img{
+    max-width: 100%;
+}
+
+.product-card div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-card button{
+    padding: 0.4rem;
+    background-color: black;
+    color: aliceblue;
+}
+
+.product-card button:hover{
+    transform: scale(1.1);
+    transition: transform .1s, background-color .1s;
+    background-color: var(--highlight-text);
+}
+
+
+@media screen and (min-width:600px) {
+    .product-card{
+        flex-basis: calc(50% - var(--gap));
+    }
+}
+
+@media screen and (min-width:800px) {
+    .product-card{
+        flex-basis: calc(33% - var(--gap));
+    }
+}
