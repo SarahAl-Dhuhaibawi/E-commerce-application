@@ -32,9 +32,26 @@ body{
     color: var(--highlight-text);
 }
 
-.header span img{
+.shopping-cart-container{
+    position: relative;
+}
+
+.shopping-cart-container img{
     /*Changes color of image to hsl(31, 85%, 62%)*/
     filter: invert(89%) sepia(14%) saturate(7484%) hue-rotate(324deg) brightness(100%) contrast(89%);
+}
+
+.shopping-cart-container span{
+    position: absolute;
+    top: 0;
+    background-color: white;
+    color: var(--text-color);
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 1.4rem;
+    aspect-ratio: 1;
+    padding: .1rem;
+    text-align: center;
 }
 
 .banner-container{
