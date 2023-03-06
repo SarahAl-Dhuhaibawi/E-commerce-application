@@ -22,14 +22,24 @@ function createProductObjects(products){
         const productObj = new Product(product.img, product.name, product.price, product.saldo);
         console.log(productObj);
 
-        productObj.getBtn().addEventListener('click', () =>{
-            Cookies.set('product', `${productObj.getImg()};${productObj.getName()};${productObj.getPrice()}`,{expires: 1});
-            console.log(Cookies.get());
-        })
+        const btn = productObj.getBtn();
+        if(product.saldo !== 0){
+            btn.addEventListener('click', () =>{
+                const span = document.querySelector('.shopping-cart-container span');
+                span.innerText++;
+
+                Cookies.set('product', `${productObj.getImg()};${productObj.getName()};${productObj.getPrice()}`,{expires: 1});
+                console.log(Cookies.get());
+                console.log(products.indexOf(product));
+            })
+        }
+        else{
+            btn.innerText = 'Out of stock';
+        }
     });
 }
 
-//Check if there are any cookies
+//Check for cookies
 if(document.cookie !== ''){
     console.log('Cookies', document.cookie);
 }
