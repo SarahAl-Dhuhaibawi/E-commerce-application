@@ -61,6 +61,7 @@ class Product{
                 btn.innerText = 'Add to cart';
                 div.appendChild(btn);
                 btn.addEventListener('click', () =>{
+                    console.log(this.#name, this.#price, this.#saldo);
                     //Lägg till produkten i kundvagnen
                 });
             }
