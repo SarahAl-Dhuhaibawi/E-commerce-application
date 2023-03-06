@@ -4,6 +4,8 @@ export class Product{
     #price;
     #saldo;
 
+    #btn;
+
     constructor(img, name, price, saldo){
         this.#img = img;
         this.#name = name;
@@ -35,13 +37,9 @@ export class Product{
             div.appendChild(priceTag);
     
             if(this.#saldo != 0){
-                const btn = document.createElement('button');
-                btn.innerText = 'Add to cart';
-                div.appendChild(btn);
-                btn.addEventListener('click', () =>{
-                    console.log(this.#name, this.#price, this.#saldo);
-                    //Lägg till produkten i kundvagnen
-                });
+                this.#btn = document.createElement('button');
+                this.#btn.innerText = 'Add to cart';
+                div.appendChild(this.#btn);
             }
             else{
                 const p = document.createElement('p');
@@ -60,5 +58,9 @@ export class Product{
 
     getPrice(){
         return this.#price;
+    }
+
+    getBtn(){
+        return this.#btn;
     }
 }

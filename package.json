@@ -1,0 +1,23 @@
+{
+  "name": "fe22-js2-mp3-eddie-peters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eddiepeters00/FE22-js2-mp3-eddie-peters.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eddiepeters00/FE22-js2-mp3-eddie-peters/issues"
+  },
+  "homepage": "https://github.com/eddiepeters00/FE22-js2-mp3-eddie-peters#readme",
+  "dependencies": {
+    "js-cookie": "^3.0.1"
+  }
+}
