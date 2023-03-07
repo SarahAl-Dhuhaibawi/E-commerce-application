@@ -2,6 +2,9 @@ import { Product } from "./Product.js";
 import Cookies from "../node_modules/js-cookie/dist/js.cookie.mjs";
 const url = 'https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products.json';
 
+
+getAllCookies();
+
 getProducts(url)
     .then(createProductObjects);
 
@@ -16,38 +19,72 @@ async function getProducts(url) {
 //Creates a cookie with the information from the object
 function createProductObjects(products) {
     products.forEach(product => {
+        console.log(product)
         const productObj = new Product(product.img, product.name, product.price, product.saldo);
 
         const btn = productObj.getBtn();
         let amount = productObj.getAmount();
 
-        /**TODO
-         * FIX amount!
-         * - compare saldo from firebase to the amount of the productObject
-         */
-        if (amount !== product.saldo) {
-            btn.addEventListener('click', () => {
-                if(amount !== productObj.getSaldo()){
-                    console.log('amount:',amount);
-                    productObj.setAmount(amount++);
-                    console.warn('PRODUCT-OBJECT', productObj);
+        const cookieValue = Cookies.get(productObj.getName());
+        if (cookieValue) {
+            const storedProduct = JSON.parse(cookieValue);
+            amount = storedProduct.amount;
+            productObj.setAmount(amount);
+        }
+
+        // Update amount if saldo is greater than stored amount
+        if (product.saldo != 0 && amount != product.saldo) {
+            btn.addEventListener("click", () => {
+                if (amount == product.saldo) {
+                    console.log('Amount:',amount, 'Saldo:',product.saldo);
+                    console.log("Product is out of stock");
+
+                  }else{
+                    amount++;
+                    console.log("amount:", amount);
+                    productObj.setAmount(amount);
+                    console.warn("PRODUCT-OBJECT", productObj);
     
-                    Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: 1 });
-                }
-            })
+                    //Expires in 10 minutes
+                    const time = new Date(new Date().getTime() + 10 * 60 * 1000);
+                    Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), {expires: time});
+                    getAllCookies();
+                  }
+            });
+        } else {
+            btn.innerText = "Out of stock";
         }
-        else {
-            btn.innerText = 'Out of stock';
-        }
+
     });
 }
 
-//Check for cookies and loop through them
-if (document.cookie !== '') {
-    const allCookies = Cookies.get();
-    console.log('All cookies:', allCookies);
+getAllCookies()
+function getAllCookies() {
+    if (document.cookie !== '') {
+        const allCookies = Cookies.get();
+        console.log('All cookies:', allCookies);
+        let nbrOfItems = 0;
+        for (const cookie in allCookies) {
+            const cookieObj = JSON.parse(allCookies[cookie]);
+            console.log('Cookie object', cookieObj);
+            console.log(cookieObj.amount);
+            nbrOfItems += cookieObj.amount
+            
+        }
+        const span = document.querySelector('.shopping-cart-container span');
+        span.innerText = nbrOfItems;
+    }
+}
 
-    for (const cookie in allCookies) {
-        console.log(JSON.parse(allCookies[cookie]));
+
+//deleteAllCookies();
+function deleteAllCookies() {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }

@@ -53,10 +53,6 @@ export class Product {
         return this.#price;
     }
 
-    setAmount(nbr){
-        this.#amount = nbr;
-    }
-
     getAmount(){
         return this.#amount; 
     }
@@ -72,5 +68,9 @@ export class Product {
 
     getBtn() {
         return this.#btn;
+    }
+
+    setAmount(nbr){
+        this.#amount = nbr;
     }
 }
