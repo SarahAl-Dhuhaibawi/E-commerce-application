@@ -33,28 +33,25 @@ function createProductObjects(products) {
         }
 
         // Update amount if saldo is greater than stored amount
-        if (product.saldo != 0 && amount != product.saldo) {
+        if (product.saldo != 0) {
             btn.addEventListener("click", () => {
                 if (amount == product.saldo) {
-                    console.log('Amount:',amount, 'Saldo:',product.saldo);
-                    console.log("Product is out of stock");
-
-                  }else{
+                    console.log('Amount:', amount, 'Saldo:', product.saldo);
+                    console.log("There are no more products");
+                    //Show message to user
+                } else {
                     amount++;
                     console.log("amount:", amount);
                     productObj.setAmount(amount);
                     console.warn("PRODUCT-OBJECT", productObj);
-    
-                    //Expires in 10 minutes
-                    const time = new Date(new Date().getTime() + 10 * 60 * 1000);
-                    Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), {expires: time});
-                    getAllCookies();
-                  }
-            });
-        } else {
-            btn.innerText = "Out of stock";
-        }
 
+                    //Expires in 15 minutes
+                    const expirationTime = new Date(new Date().getTime() + 15 * 60 * 1000);
+                    Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: expirationTime });
+                    getAllCookies();
+                }
+            });
+        }
     });
 }
 
@@ -68,8 +65,7 @@ function getAllCookies() {
             const cookieObj = JSON.parse(allCookies[cookie]);
             console.log('Cookie object', cookieObj);
             console.log(cookieObj.amount);
-            nbrOfItems += cookieObj.amount
-            
+            nbrOfItems += cookieObj.amount;
         }
         const span = document.querySelector('.shopping-cart-container span');
         span.innerText = nbrOfItems;
