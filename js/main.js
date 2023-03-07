@@ -9,37 +9,34 @@ getProducts(url)
 async function getProducts(url) {
     const response = await fetch(url);
     const products = await response.json();
-    console.log(products);
     return products;
 }
 
 //Create Product objects with info from firebase
-/**TODO
- * Fix cookies
- */
-function createProductObjects(products){
-    products.forEach(product =>{
+//Creates a cookie with the information from the object
+function createProductObjects(products) {
+    products.forEach(product => {
         const productObj = new Product(product.img, product.name, product.price, product.saldo);
-        console.log(productObj);
 
         const btn = productObj.getBtn();
-        if(product.saldo !== 0){
-            btn.addEventListener('click', () =>{
-                const span = document.querySelector('.shopping-cart-container span');
-                span.innerText++;
-
-                Cookies.set('product', `${productObj.getImg()};${productObj.getName()};${productObj.getPrice()}`,{expires: 1});
-                console.log(Cookies.get());
-                console.log(products.indexOf(product));
+        if (product.saldo !== 0) {
+            btn.addEventListener('click', () => {
+                Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: 1 });
             })
         }
-        else{
+        else {
             btn.innerText = 'Out of stock';
         }
     });
 }
 
 //Check for cookies
-if(document.cookie !== ''){
-    console.log('Cookies', document.cookie);
+//Loop through all cookies
+if (document.cookie !== '') {
+    const allCookies = Cookies.get();
+    console.log('All cookies:', allCookies);
+
+    for (const cookie in allCookies) {
+        console.log(JSON.parse(allCookies[cookie]));
+    }
 }

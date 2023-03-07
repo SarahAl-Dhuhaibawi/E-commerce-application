@@ -53,6 +53,14 @@ export class Product {
         return this.#price;
     }
 
+    getInfo(){
+        return{
+            img: this.#img,
+            name: this.#name,
+            price: this.#price
+        };
+    }
+
     getBtn() {
         return this.#btn;
     }
