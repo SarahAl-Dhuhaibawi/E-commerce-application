@@ -19,9 +19,21 @@ function createProductObjects(products) {
         const productObj = new Product(product.img, product.name, product.price, product.saldo);
 
         const btn = productObj.getBtn();
-        if (product.saldo !== 0) {
+        let amount = productObj.getAmount();
+
+        /**TODO
+         * FIX amount!
+         * - compare saldo from firebase to the amount of the productObject
+         */
+        if (amount !== product.saldo) {
             btn.addEventListener('click', () => {
-                Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: 1 });
+                if(amount !== productObj.getSaldo()){
+                    console.log('amount:',amount);
+                    productObj.setAmount(amount++);
+                    console.warn('PRODUCT-OBJECT', productObj);
+    
+                    Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: 1 });
+                }
             })
         }
         else {
@@ -30,8 +42,7 @@ function createProductObjects(products) {
     });
 }
 
-//Check for cookies
-//Loop through all cookies
+//Check for cookies and loop through them
 if (document.cookie !== '') {
     const allCookies = Cookies.get();
     console.log('All cookies:', allCookies);

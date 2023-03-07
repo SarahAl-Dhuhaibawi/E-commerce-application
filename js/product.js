@@ -2,15 +2,15 @@ export class Product {
     #img;
     #name;
     #price;
-    #saldo;
+    #amount;
 
     #btn;
 
-    constructor(img, name, price, saldo) {
+    constructor(img, name, price) {
         this.#img = img;
         this.#name = name;
         this.#price = price;
-        this.#saldo = saldo;
+        this.#amount = 0;
         this.#displayProduct();
     }
 
@@ -53,11 +53,20 @@ export class Product {
         return this.#price;
     }
 
+    setAmount(nbr){
+        this.#amount = nbr;
+    }
+
+    getAmount(){
+        return this.#amount; 
+    }
+
     getInfo(){
         return{
             img: this.#img,
             name: this.#name,
-            price: this.#price
+            price: this.#price,
+            amount: this.#amount
         };
     }
 
