@@ -10,6 +10,8 @@ const buyAnimation = {
     easing: 'easeInOutQuad',
     direction: 'alternate',
     backgroundColor: '#7fff7f',
+    duration: 1000,
+    endDelay: 500
 };
 
 document.querySelector('.buy-btn button').addEventListener('click', () => {
