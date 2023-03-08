@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/eddiepeters00/FE22-js2-mp3-eddie-peters#readme",
   "dependencies": {
+    "anime": "^0.1.2",
     "animejs": "^3.2.1",
     "js-cookie": "^3.0.1"
   }
