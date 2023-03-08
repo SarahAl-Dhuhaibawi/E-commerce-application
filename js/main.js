@@ -3,7 +3,7 @@ import Cookies from "../node_modules/js-cookie/dist/js.cookie.mjs";
 const url = 'https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products.json';
 
 
-getAllCookies();
+setNumberOfItemsInCart();
 
 getProducts(url)
     .then(createProductObjects);
@@ -48,28 +48,29 @@ function createProductObjects(products) {
                     //Expires in 15 minutes
                     const expirationTime = new Date(new Date().getTime() + 15 * 60 * 1000);
                     Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: expirationTime });
-                    getAllCookies();
+                    setNumberOfItemsInCart();
                 }
             });
         }
     });
 }
 
-getAllCookies()
 function getAllCookies() {
-    if (document.cookie !== '') {
-        const allCookies = Cookies.get();
-        console.log('All cookies:', allCookies);
-        let nbrOfItems = 0;
-        for (const cookie in allCookies) {
-            const cookieObj = JSON.parse(allCookies[cookie]);
-            console.log('Cookie object', cookieObj);
-            console.log(cookieObj.amount);
-            nbrOfItems += cookieObj.amount;
-        }
-        const span = document.querySelector('.shopping-cart-container span');
-        span.innerText = nbrOfItems;
+    const allCookies = Cookies.get();
+    return allCookies;
+}
+
+function setNumberOfItemsInCart() {
+    const allCookies = getAllCookies();
+    let nbrOfItems = 0;
+    for (const cookie in allCookies) {
+        const cookieObj = JSON.parse(allCookies[cookie]);
+        console.log('Cookie object', cookieObj);
+        console.log(cookieObj.amount);
+        nbrOfItems += cookieObj.amount;
     }
+    const span = document.querySelector('.shopping-cart-container span');
+    span.innerText = nbrOfItems;
 }
 
 
