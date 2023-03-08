@@ -7,7 +7,6 @@
     --header-font: 'Oswald', sans-serif;
     
     --gap: 3rem;
-
 }
 
 *{
@@ -183,11 +182,28 @@ main{
 }
 
 
+/*Buy Animation*/
+.buy-btn{
+    position: relative;
+    width: 4rem;
+    aspect-ratio: 1;
+    background-color: var(--highlight-text);
+    color: white;
+}
 
+.buy-btn button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
 
-
-
-
+.buy-btn div{
+    position: relative;
+    width: 0%;
+    height: 100%;
+    background-color: var(--highlight-text);
+}
 
 
 @media screen and (min-width:600px) {
@@ -201,14 +217,12 @@ main{
 }
 
 @media screen and (min-width:900px) {
- 
     .product-card{
         flex-basis: calc(33% - var(--gap));
     }
 }
 
 @media screen and (min-width:1200px) {
- 
     .product-card{
         flex-basis: calc(25% - var(--gap));
     }
