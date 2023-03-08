@@ -6,12 +6,12 @@ import anime from "../node_modules/animejs/lib/anime.es.js";
 //ANIMATION ON BUTTON
 const buyAnimation = {
     targets: '.buy-btn div',
-    width: '100%',
+    width: ['0%', '100%'],
     easing: 'easeInOutQuad',
     direction: 'alternate',
     backgroundColor: '#7fff7f',
     duration: 1000,
-    endDelay: 500
+    endDelay: 250
 };
 
 document.querySelector('.buy-btn button').addEventListener('click', () => {
