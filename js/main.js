@@ -26,6 +26,8 @@ function createProductObjects(products) {
         const btn = productObj.getBtn();
         let amount = productObj.getAmount();
 
+        const productCard = productObj.getProductCard();
+
         const cookieValue = Cookies.get(productObj.getName());
         if (cookieValue) {
             const storedProduct = JSON.parse(cookieValue);
