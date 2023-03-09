@@ -35,7 +35,6 @@ function createProductObjects(products) {
     }
 
     // Update amount if saldo is greater than stored amount
-    if (product.saldo != 0) {
       btn.addEventListener("click", () => {
         if (amount == product.saldo) {
           console.log("Amount:", amount, "Saldo:", product.saldo);
@@ -66,7 +65,6 @@ function createProductObjects(products) {
           setNumberOfItemsInCart();
         }
       });
-    }
   });
 }
 

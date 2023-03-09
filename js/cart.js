@@ -67,7 +67,7 @@ function createElements(product) {
 
            updateSaldo(product.id, productSaldo);
         }
-
+        clearCookies();
     });
     
     clearShoppingCart();
