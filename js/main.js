@@ -37,15 +37,15 @@ function createProductObjects(products) {
     // Update amount if saldo is greater than stored amount
       btn.addEventListener("click", () => {
         if (amount == product.saldo) {
+          btn.disabled=true;
           console.log("Amount:", amount, "Saldo:", product.saldo);
           console.log("There are no more products");
-          //Show message to user
+          //Show message (sold out) to user
           const soldOutP = document.createElement("p");
           productCard.appendChild(soldOutP);
           soldOutP.innerText = "There are no more products";
           soldOutP.style.backgroundColor = "#c80043";
           soldOutP.style.color = "#fff";
-          //do not repeat message...
           
         } else {
           amount++;

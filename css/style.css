@@ -108,6 +108,11 @@ main{
     color: aliceblue;
 }
 
+button:disabled{
+  pointer-events:none;
+  opacity: 0.2;;
+
+}
 .product-card button:hover{
     transform: scale(1.1);
     transition: transform .1s, background-color .1s;
