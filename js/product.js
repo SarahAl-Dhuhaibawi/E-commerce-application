@@ -4,15 +4,17 @@ export class Product {
     #price;
     #amount;
     #saldo;
+    #id;
     #btn;
     #productCard;
 
-    constructor(img, name, price, saldo) {
+    constructor(img, name, price, saldo, id) {
         this.#img = img;
         this.#name = name;
         this.#price = price;
         this.#amount = 0;
         this.#saldo = saldo;
+        this.#id = id;
         this.#displayProduct();
     }
 
@@ -65,7 +67,8 @@ export class Product {
             name: this.#name,
             price: this.#price,
             amount: this.#amount,
-            saldo: this.#saldo
+            saldo: this.#saldo,
+            id: this.#id
         };
     }
 

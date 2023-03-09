@@ -61,11 +61,7 @@ function createElements(product) {
                 saldo: updatedSaldo
             };
 
-    
-
-           cookieArr.push(product);
-           console.log();
-           updateSaldo(productSaldo);
+           updateSaldo(product.id, productSaldo);
         }
     });
     
@@ -129,9 +125,9 @@ function clearCookies(){
 }
 
 //Patch saldo in firebase
-async function updateSaldo(index, amount) {
-    console.log('INDEX',index);
-    const url = `https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products/${index}.json`;
+async function updateSaldo(id, amount) {
+    console.log('INDEX', id);
+    const url = `https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json`;
     const init = {
         method: 'PATCH',
         body: JSON.stringify(amount),

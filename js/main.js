@@ -21,7 +21,7 @@ async function getProducts(url) {
 function createProductObjects(products) {
     products.forEach(product => {
         console.log(product)
-        const productObj = new Product(product.img, product.name, product.price, product.saldo);
+        const productObj = new Product(product.img, product.name, product.price, product.saldo, product.id);
 
         const btn = productObj.getBtn();
         let amount = productObj.getAmount();
