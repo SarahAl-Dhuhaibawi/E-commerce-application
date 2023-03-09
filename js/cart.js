@@ -50,6 +50,10 @@ function createElements(product) {
     showAndHideElements();
     
     document.querySelector(".checkout-btn").addEventListener("click", () => {
+
+        // display animation and thanks message
+        loadingAnime();
+        // ThanksMessage.style.display = 'block';
     
         //UpdateFirebase saldo
         const allCookies = Cookies.get();
@@ -63,6 +67,7 @@ function createElements(product) {
 
            updateSaldo(product.id, productSaldo);
         }
+
     });
     
     clearShoppingCart();
@@ -85,10 +90,10 @@ function loadingAnime() {
         cancelBtn.style.display = "none";
         //   console.log(animation,box)
 
-        /*setTimeout(() => {
+        
             anime({
                 targets: "#box #animation",
-                duration: 2000,
+                duration: 3000,
                 easing: "linear",
                 opacity: 0,
                 translateY: 30,
@@ -97,11 +102,14 @@ function loadingAnime() {
                 loop: true,
                 direction: "alternate",
                 delay: anime.stagger(300),
-            });
-            ("2000");
+            })
 
-            document.querySelector(".success-message-div").style.display = "block"; // ani och message inte somtidigt
-        }); */
+            setTimeout(() => {
+                box.style.display = 'none';
+        ThanksMessage.style.display = 'block';
+            }, 3000);
+
+         
 }
 
 //clearShoppingCart
