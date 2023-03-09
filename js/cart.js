@@ -106,8 +106,12 @@ function clearShoppingCart(){
         productsContainerParents.style = 'none';
 
 
-        //vi måste updatera vår storage
-    })
+        //Delete all cookies
+        const allCookies = Cookies.get();
+        for (const cookie in allCookies) {
+            Cookies.remove(cookie);
+        }   
+    });
 }
 
 
