@@ -11,10 +11,17 @@ shoppingListFromCookies();
 
 function shoppingListFromCookies() {
     const allCookies = Cookies.get();
+    let totalPrice = 0;
     for (const cookie in allCookies) {
-       console.log(JSON.parse(allCookies[cookie]));
-       createElements(JSON.parse(allCookies[cookie]));
+       const product = JSON.parse(allCookies[cookie]);
+       console.log(product);
+       createElements(product);
+
+       totalPrice += product.price * product.amount;
     }
+    console.log(totalPrice);
+    const basketTotal = document.querySelector('.basketTotal');
+    basketTotal.innerText = totalPrice;
 }
 
 function createElements(product){
@@ -43,9 +50,6 @@ const productTotalSum = document.createElement('p');
 productsCartDiv.append(productTotalSum);
 productTotalSum.innerText = `${product.price * product.amount}` + 'kr';
 
-
-const basketTotal = document.querySelector('.basketTotal');
-basketTotal.innerText = `${Number(product.price) * Number(product.amount)}`;
 
 showAndHideElements();
 loadingAnime();
