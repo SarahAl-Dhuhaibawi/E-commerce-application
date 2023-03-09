@@ -3,7 +3,7 @@ import Cookies from "../node_modules/js-cookie/dist/js.cookie.mjs";
 const url = 'https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products.json';
 
 
-setNumberOfItemsInCart();
+ setNumberOfItemsInCart();
 
 getProducts(url)
     .then(createProductObjects);
@@ -12,6 +12,7 @@ getProducts(url)
 async function getProducts(url) {
     const response = await fetch(url);
     const products = await response.json();
+    console.log(products)
     return products;
 }
 
@@ -48,7 +49,7 @@ function createProductObjects(products) {
                     //Expires in 15 minutes
                     const expirationTime = new Date(new Date().getTime() + 15 * 60 * 1000);
                     Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: expirationTime });
-                    setNumberOfItemsInCart();
+                     setNumberOfItemsInCart();
                 }
             });
         }
@@ -65,7 +66,8 @@ function setNumberOfItemsInCart() {
     const allCookies = getAllCookies();
     let nbrOfItems = 0;
     for (const cookie in allCookies) {
-        const cookieObj = JSON.parse(allCookies[cookie]);
+         const cookieObj = JSON.parse(allCookies[cookie]);
+        console.log(cookie)
         console.log('Cookie object', cookieObj);
         console.log(cookieObj.amount);
         nbrOfItems += cookieObj.amount;

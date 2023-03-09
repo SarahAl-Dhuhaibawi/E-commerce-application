@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/cart.js" type="module"></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-        <h1>BrandName</h1>
-        <a  class="p-link" href="../index.html">Products</a>
+      <h1>BrandName</h1>
+      <a class="p-link" href="../index.html">Products</a>
     </header>
 
     <article class="banner-container">
-        <img src="" alt="">
-        <h2>Shopping cart</h2>
+      <img src="" alt="" />
+      <h2>Shopping cart</h2>
     </article>
 
-    <div class="products-container">
-        <div class="product-header">
-            <h4 class="product-title">PRODUCT</h4>
-            <h4 class="price">PRICE</h4>
-            <h4 class="quantity">QUANTITY</h4>
-            <h4 class="total">TOTAL</h4>
-        </div>
-        <div class="products" >
-
-        </div>
+    <div class="cart-intro-div">
+        <h4 >THE CART IS EMPTY</h4>
     </div>
 
-</body>
+    <div class="cancel-div">
+        <button class="cancel-btn"> CANCEL PURCHASE</button>
+    </div>
+
+    <div class="products-container">
+      <div class="product-header">
+        <h4>PRODUCT</h4>
+        <h4>PRICE</h4>
+        <h4>QUANTITY</h4>
+        <h4>TOTAL</h4>
+      </div>
+      <div class="products"></div>
+      
+      <div class="basketTotalContainer">
+        <h4 class="basketTotalTitle">Basket Total</h4>
+        <h4 class="basketTotal"></h4>
+      </div>
+
+      <div class="checkout-div">
+        <button class="checkout-btn">TO THE CHECKOUT</button>
+      </div>
+
+     
+    </div>
+
+    <div class="box" id="box">
+        <div class="animation" id="animation"></div>
+        <div class="animation" id="animation"></div>
+        <div class="animation" id="animation"></div>
+      </div>
+
+      <div class="success-message-div">
+        <h4 class="success-message">THANKS FOR YOUR ORDER </h4>
+      </div>
+  </body>
 </html>
