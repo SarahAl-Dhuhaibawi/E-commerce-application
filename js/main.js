@@ -49,7 +49,7 @@ function createProductObjects(products) {
                     //Expires in 15 minutes
                     const expirationTime = new Date(new Date().getTime() + 15 * 60 * 1000);
                     Cookies.set(productObj.getName(), JSON.stringify(productObj.getInfo()), { expires: expirationTime });
-                     setNumberOfItemsInCart();
+                    setNumberOfItemsInCart();
                 }
             });
         }
@@ -75,17 +75,3 @@ function setNumberOfItemsInCart() {
     const span = document.querySelector('.shopping-cart-container span');
     span.innerText = nbrOfItems;
 }
-
-
-//deleteAllCookies();
-function deleteAllCookies() {
-    const cookies = document.cookie.split(";");
-
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i];
-        const eqPos = cookie.indexOf("=");
-        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
-

@@ -91,6 +91,14 @@ function loadingAnime() {
       document.querySelector(".success-message-div").style.display = "block"; // ani och message inte somtidigt
     });
   });
+
+  //UpdateFirebase saldo
+  const allCookies = Cookies.get();
+  for (const cookie in allCookies) {
+    const product = JSON.parse(allCookies[cookie]);
+    console.log(product);
+    //updateSaldo(cookie.amount);
+  }
 }
 
 //clearShoppingCart
@@ -109,3 +117,24 @@ function clearShoppingCart() {
 
 //En knapp för att genomföra köpet (inte på riktigt)  ????? ändra storage
 //En knapp för att tömma kundvagnen ?????    ändra storage
+
+
+//Patch saldo in firebase
+
+async function updateSaldo(amount) {
+    const url = `https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products${indexOf(cookieObj)}.json`;
+    const init = {
+        method: 'PATCH',
+        body: JSON.stringify(amount),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    };
+
+    const response = await fetch(url, init);
+    const data = await response.json();
+    console.log(data);
+}
+
+
+//updateSaldo();
