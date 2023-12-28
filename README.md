@@ -1,4 +1,4 @@
-# FE22-js2-mp3-eddie-peters
+# E-commerce website
 
 ## Uppdelning av projekt
 ### Sarah Al-Dhuhaibawi
