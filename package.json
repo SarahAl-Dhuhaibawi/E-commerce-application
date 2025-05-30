@@ -1,5 +1,5 @@
 {
-  "name": "fe22-js2-mp3-eddie-peters",
+  "name": "e-commerce-application",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eddiepeters00/FE22-js2-mp3-eddie-peters.git"
+    "url": "https://github.com/SarahAl-Dhuhaibawi/E-commerce-application.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eddiepeters00/FE22-js2-mp3-eddie-peters/issues"
+    "url": "https://github.com/SarahAl-Dhuhaibawi/E-commerce-application/issues"
   },
-  "homepage": "https://github.com/eddiepeters00/FE22-js2-mp3-eddie-peters#readme",
+  "homepage": "https://SarahAl-Dhuhaibawi.github.io/E-commerce-application",
   "dependencies": {
     "anime": "^0.1.2",
     "animejs": "^3.2.1",
