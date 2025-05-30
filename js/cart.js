@@ -128,7 +128,8 @@ function clearCookies() {
 //Patch saldo in firebase
 async function updateSaldo(id, amount) {
   console.log("INDEX", id);
-  const url = `https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json`;
+  const url = `https://e-commerce-application-216c5-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json`;
+
   const init = {
     method: "PATCH",
     body: JSON.stringify(amount),

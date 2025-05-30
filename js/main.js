@@ -1,11 +1,16 @@
 import { Product } from "./Product.js";
 import Cookies from "../node_modules/js-cookie/dist/js.cookie.mjs";
-const url =
-  "https://js2-mp3-default-rtdb.europe-west1.firebasedatabase.app/products.json";
+
+  const url =
+  "https://e-commerce-application-216c5-default-rtdb.europe-west1.firebasedatabase.app/products.json";
+
 
 setNumberOfItemsInCart();
 
-getProducts(url).then(createProductObjects);
+getProducts(url).then(products => {
+  createProductObjects(Object.values(products));
+});
+
 
 //Fetch products from firebase
 async function getProducts(url) {
